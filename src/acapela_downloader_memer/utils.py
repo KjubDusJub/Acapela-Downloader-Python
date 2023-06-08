@@ -7,7 +7,6 @@ NONCE_ENDPOINT = "https://acapelavoices.acapela-group.com/index/getnonce/"
 SYNTHESIZER_ENDPOINT = "https://www.acapela-group.com:8443/Services/Synthesizer"
 cached_nonce = ""
 cached_email = ""
-last_failed = False
 
 
 def update_nonce_token():
@@ -27,7 +26,6 @@ def update_nonce_token():
     if len(nonce_response.json()["nonce"]) > 1:
         cached_nonce = nonce_response.json()["nonce"]
         cached_email = fake_email
-    last_failed = False
 
 
 def get_sound_link(text, voice_id):
