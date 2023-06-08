@@ -18,7 +18,6 @@ def update_nonce_token():
     fake_email = ""
     for i in range(EMAIL_LENGTH):
         fake_email += random.choice(string.ascii_letters)
-    print(fake_email)
     fake_email += "@gmail.com"
     nonce_response = post(NONCE_ENDPOINT, json={
         "googleid": fake_email
