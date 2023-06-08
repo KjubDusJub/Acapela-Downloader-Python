@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/acapela_downloader_memer/__init__,py.py
+src/acapela_downloader_memer/acapela.py
+src/acapela_downloader_memer/utils.py
+src/acapela_downloader_py.egg-info/PKG-INFO
+src/acapela_downloader_py.egg-info/SOURCES.txt
+src/acapela_downloader_py.egg-info/dependency_links.txt
+src/acapela_downloader_py.egg-info/top_level.txt
