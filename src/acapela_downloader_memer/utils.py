@@ -28,7 +28,6 @@ def update_nonce_token():
         cached_nonce = nonce_response.json()["nonce"]
         cached_email = fake_email
     last_failed = False
-    print(cached_nonce + " " + cached_email)
 
 
 def get_sound_link(text, voice_id):
