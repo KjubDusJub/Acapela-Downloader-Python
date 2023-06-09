@@ -2,7 +2,14 @@
 Translated over to Python from C#: https://github.com/weespin/WillFromAfarDownloader
 
 # How to use
-It's pretty damn easy, just import the generate_audio function from the package and fill out the necessary arguments.
+
+First download the pip package.
+
+```
+pip install acapela-downloader-py
+```
+
+Then use the 'generate_audio' function from the 'acapela' library
 
 ``` python
 from acapela import generate_audio
