@@ -28,8 +28,7 @@ def update_nonce_token():
 
 
 def get_sound_link(text, voice_id):
-    if cached_email == "" or cached_nonce == "":
-        update_nonce_token()
+    update_nonce_token()
     finished = False
     while not finished:
         try:
