@@ -1,6 +1,6 @@
 [project]
 name = "acapela_downloader_py"
-version = "0.0.6"
+version = "0.0.7"
 authors = [
   { name="JWKK"},
 ]
@@ -14,3 +14,4 @@ classifiers = [
 
 [project.urls]
 "Homepage" = "https://memerdev.com"
+"GitHub" = "https://memerdev.com"

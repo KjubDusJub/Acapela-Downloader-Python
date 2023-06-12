@@ -30,11 +30,21 @@ def update_nonce_token():
 def get_sound_link(text, voice_id):
     if cached_email == "" or cached_nonce == "":
         update_nonce_token()
-    synthesizer_request_string = f"req_voice={voice_id}&cl_pwd=&cl_vers=1-30&req_echo=ON&cl_login=AcapelaGroup&req_comment=%7B%22nonce%22%3A%22{cached_nonce}%22%2C%22user%22%3A%22{cached_email}%22%7D&req_text={text}&cl_env=ACAPELA_VOICES&prot_vers=2&cl_app=AcapelaGroup_WebDemo_Android"
-    synthesizer_request_bytes = bytes(synthesizer_request_string, 'utf-8')
-    headers = {'Content-type': 'application/x-www-form-urlencoded', 'Content-Length': str(len(synthesizer_request_bytes))}
-    synthesizer_request = post(SYNTHESIZER_ENDPOINT, headers=headers, data=synthesizer_request_string)
-    split_res = re.split('&snd_url=|&snd_size', str(synthesizer_request.content))
-    return split_res[1]
+    finished = False
+    while not finished:
+        try:
+            synthesizer_request_string = f"req_voice={voice_id}&cl_pwd=&cl_vers=1-30&req_echo=ON&cl_login=AcapelaGroup&req_comment=%7B%22nonce%22%3A%22{cached_nonce}%22%2C%22user%22%3A%22{cached_email}%22%7D&req_text={text}&cl_env=ACAPELA_VOICES&prot_vers=2&cl_app=AcapelaGroup_WebDemo_Android"
+            synthesizer_request_bytes = bytes(synthesizer_request_string, 'utf-8')
+            headers = {'Content-type': 'application/x-www-form-urlencoded',
+                       'Content-Length': str(len(synthesizer_request_bytes))}
+            synthesizer_request = post(SYNTHESIZER_ENDPOINT, headers=headers, data=synthesizer_request_string)
+            split_res = re.split('&snd_url=|&snd_size', str(synthesizer_request.content))
+            finished = True
+            return split_res[1]
+        except:
+            print("generating new nonce")
+            update_nonce_token()
+    return ""
+
 
 
