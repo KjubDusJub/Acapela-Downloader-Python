@@ -1,6 +1,6 @@
 [project]
 name = "acapela_downloader_py"
-version = "0.0.7"
+version = "0.0.8"
 authors = [
   { name="JWKK"},
 ]
