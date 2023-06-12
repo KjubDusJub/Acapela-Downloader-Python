@@ -1,6 +1,8 @@
 import random
 import string
 import re
+from datetime import time
+
 from requests import post
 
 NONCE_ENDPOINT = "https://acapelavoices.acapela-group.com/index/getnonce/"
@@ -41,8 +43,8 @@ def get_sound_link(text, voice_id):
             finished = True
             return split_res[1]
         except:
-            print("generating new nonce")
-            update_nonce_token()
+            print("one minute delay...")
+            time.sleep(60)
     return ""
 
 
