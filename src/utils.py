@@ -6,6 +6,12 @@ from time import sleep
 
 from requests import post
 
+debug_mode = False
+
+def set_debug_mode(active):
+    global debug_mode
+    debug_mode = active
+
 NONCE_ENDPOINT = "https://acapelavoices.acapela-group.com/index/getnonce/"
 SYNTHESIZER_ENDPOINT = "https://www.acapela-group.com:8443/Services/Synthesizer"
 cached_nonce = ""
@@ -37,6 +43,7 @@ def update_nonce_token():
 
 
 def get_sound_link(text, voice_id):
+    global debug_mode
     finished = False
     while not finished:
         update_nonce_token()
@@ -47,8 +54,11 @@ def get_sound_link(text, voice_id):
                        'Content-Length': str(len(synthesizer_request_bytes))}
             synthesizer_request = post(SYNTHESIZER_ENDPOINT, headers=headers, data=synthesizer_request_string)
             split_res = re.split('&snd_url=|&snd_size', str(synthesizer_request.content))
-            finished = True
-            return split_res[1]
+            if debug_mode:
+                print("DEBUG: " + str(synthesizer_request.content))
+            if len(split_res) > 1:
+                finished = True
+                return split_res[1]
         except Exception as msg:
             print(msg)
             update_nonce_token()
