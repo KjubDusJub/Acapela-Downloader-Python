@@ -49,10 +49,9 @@ def get_sound_link(text, voice_id):
             split_res = re.split('&snd_url=|&snd_size', str(synthesizer_request.content))
             finished = True
             return split_res[1]
-        except:
+        except Exception as msg:
+            print(msg)
             update_nonce_token()
-            print("one minute delay...")
-            sleep(60)
     return ""
 
 
