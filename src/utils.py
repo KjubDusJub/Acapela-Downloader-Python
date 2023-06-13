@@ -37,6 +37,7 @@ def update_nonce_token():
 
         if debug_mode:
             print("DEBUG: " + fake_email)
+            print("DEBUG: " + nonce_response.json()["nonce"])
 
         if len(nonce_response.json()["nonce"]) > 1:
             cached_nonce = nonce_response.json()["nonce"]
