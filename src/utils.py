@@ -18,6 +18,7 @@ def set_debug_mode(active):
 def update_nonce_token():
     global NONCE_ENDPOINT
     global cached_nonce
+    global debug_mode
     global cached_email
     global last_failed
 
@@ -29,9 +30,14 @@ def update_nonce_token():
         for i in range(EMAIL_LENGTH):
             fake_email += random.choice(string.ascii_letters)
         fake_email += "@gmail.com"
+        fake_email = fake_email.replace(" ", "")
         nonce_response = post(NONCE_ENDPOINT, json={
             "googleid": fake_email
         })
+
+        if debug_mode:
+            print("DEBUG: " + fake_email)
+
         if len(nonce_response.json()["nonce"]) > 1:
             cached_nonce = nonce_response.json()["nonce"]
             cached_email = fake_email
