@@ -2,6 +2,7 @@ import random
 import string
 import re
 from datetime import time
+from time import sleep
 
 from requests import post
 
@@ -30,9 +31,9 @@ def update_nonce_token():
 
 
 def get_sound_link(text, voice_id):
-    update_nonce_token()
     finished = False
     while not finished:
+        update_nonce_token()
         try:
             synthesizer_request_string = f"req_voice={voice_id}&cl_pwd=&cl_vers=1-30&req_echo=ON&cl_login=AcapelaGroup&req_comment=%7B%22nonce%22%3A%22{cached_nonce}%22%2C%22user%22%3A%22{cached_email}%22%7D&req_text={text}&cl_env=ACAPELA_VOICES&prot_vers=2&cl_app=AcapelaGroup_WebDemo_Android"
             synthesizer_request_bytes = bytes(synthesizer_request_string, 'utf-8')
@@ -43,8 +44,9 @@ def get_sound_link(text, voice_id):
             finished = True
             return split_res[1]
         except:
+            update_nonce_token()
             print("one minute delay...")
-            time.sleep(60)
+            sleep(60)
     return ""
 
 
