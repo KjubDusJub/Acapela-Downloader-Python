@@ -1,6 +1,6 @@
 import requests
 
-from utils import get_sound_link
+from utils import get_sound_link, debug_mode
 
 
 def generate_audio(txt, voice="", file_output="out.mp3"):
