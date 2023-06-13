@@ -1,6 +1,6 @@
 import requests
 
-from utils import get_sound_link, debug_mode
+from utils import get_sound_link, set_debug_mode
 
 def generate_audio(txt, voice="", file_output="out.mp3"):
     if voice == "":

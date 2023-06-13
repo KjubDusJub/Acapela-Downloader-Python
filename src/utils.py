@@ -1,9 +1,6 @@
 import random
 import string
 import re
-from datetime import time
-from time import sleep
-
 from requests import post
 
 debug_mode = False
@@ -14,6 +11,9 @@ SYNTHESIZER_ENDPOINT = "https://www.acapela-group.com:8443/Services/Synthesizer"
 cached_nonce = ""
 cached_email = ""
 
+def set_debug_mode(active):
+    global debug_mode
+    debug_mode = active
 
 def update_nonce_token():
     global NONCE_ENDPOINT
