@@ -8,9 +8,6 @@ from requests import post
 
 debug_mode = False
 
-def set_debug_mode(active):
-    global debug_mode
-    debug_mode = active
 
 NONCE_ENDPOINT = "https://acapelavoices.acapela-group.com/index/getnonce/"
 SYNTHESIZER_ENDPOINT = "https://www.acapela-group.com:8443/Services/Synthesizer"

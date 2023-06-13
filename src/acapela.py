@@ -2,7 +2,6 @@ import requests
 
 from utils import get_sound_link, debug_mode
 
-
 def generate_audio(txt, voice="", file_output="out.mp3"):
     if voice == "":
         voice = "enu_willhappy_22k_ns.bvcu"
